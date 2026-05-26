@@ -1,73 +1,106 @@
-# React + TypeScript + Vite
+# Guess the Word 🎮
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A fun and interactive word guessing game built with React, TypeScript, and Vite. Players try to guess a hidden word by suggesting letters, with a limited number of attempts.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- 🎯 **Interactive Gameplay** - Guess letters to reveal the hidden word
+- 📊 **Score Tracking** - Keep track of correct guesses
+- 💡 **Helpful Tips** - Get hints about each word to help you guess
+- ⏱️ **Limited Attempts** - Challenge yourself with a maximum number of guesses (word length + 5)
+- 🎨 **Clean UI** - Modern, responsive interface with visual feedback
+- ⚡ **Fast Performance** - Built with Vite for lightning-fast development and production builds
+- 🔒 **Type Safe** - Full TypeScript support for reliability
 
-## React Compiler
+## How to Play
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+1. Start the game - a random word will be selected
+2. Look at the tip to get a hint about the word
+3. Guess one letter at a time
+4. Correct letters will be revealed in the word
+5. Win by guessing all letters before running out of attempts
+6. Each word gives you (word length + 5) attempts to guess
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **React 19** - Modern UI library with hooks
+- **TypeScript** - Type-safe JavaScript
+- **Vite** - Next-generation frontend build tool
+- **ESLint** - Code quality and consistency
+- **CSS Modules** - Scoped styling
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Getting Started
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Prerequisites
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- Node.js (v18 or higher)
+- npm or yarn
+
+### Installation
+
+```bash
+# Install dependencies
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Development
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+# Start the development server
+npm run dev
 ```
+
+The application will open at `http://localhost:5173` with hot module replacement (HMR) enabled.
+
+### Building for Production
+
+```bash
+# Build the project
+npm run build
+
+# Preview the production build
+npm run preview
+```
+
+### Linting
+
+```bash
+# Check code quality
+npm run lint
+```
+
+## Project Structure
+
+```
+src/
+├── components/          # Reusable UI components
+│   ├── Button/         # Button component
+│   ├── Header/         # Game header with stats
+│   ├── Input/          # Letter input field
+│   ├── Letter/         # Individual letter display
+│   ├── Letters/        # Letters history
+│   └── Tip/            # Word hint display
+├── utils/
+│   └── words.ts        # Word bank and game data
+├── App.tsx             # Main application component
+├── main.tsx            # Application entry point
+├── app.module.css      # App styles
+└── global.css          # Global styles
+```
+
+## Game Logic
+
+- Each game selects a random word from the word bank
+- Players input one letter at a time
+- Correct guesses are highlighted and appear in the word
+- Duplicate guesses are prevented
+- Win condition: Reveal all letters before running out of attempts
+- Loss condition: Exceed the maximum number of attempts
+
+## Contributing
+
+Feel free to fork this project and submit pull requests for improvements!
+
+## License
+
+This project is open source and available under the MIT License.
